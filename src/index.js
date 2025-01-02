@@ -835,7 +835,7 @@ class PhoneInput extends React.Component {
           data-country-code={country.iso2}
           onClick={(e) => this.handleFlagItemClick(country, e)}
           role='option'
-          {... highlight ? { "aria-selected": true } : {}}
+          aria-selected={highlight}
         >
           <div className={inputFlagClasses}/>
           <span className='country-name'>{this.getDropdownCountryName(country)}</span>
@@ -864,6 +864,7 @@ class PhoneInput extends React.Component {
         className={dropDownClasses}
         style={this.props.dropdownStyle}
         role='listbox'
+        aria-label="Country codes list"
         tabIndex='0'
       >
         {enableSearch && (
