@@ -9,9 +9,11 @@
     "start": "TARGET=dev_js NODE_ENV=development webpack-dev-server --progress",
     "start:css": "TARGET=dev_css NODE_ENV=development webpack-dev-server --progress",
     "build": "export SET NODE_OPTIONS=--openssl-legacy-provider && npm run build:js && npm run build:css",
-    "build:js": "TARGET=build_js NODE_ENV=production webpack -p --progress",
-    "build:css": "TARGET=build_css NODE_ENV=production webpack -p --progress && rm ./main.js",
+    "build:js": "TARGET=build_js NODE_ENV=production webpack --mode production --progress",
+    "build:css": "TARGET=build_css NODE_ENV=production webpack --mode production --progress && rm ./main.js",
     "prepublishOnly": "npm run build",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d lib",
     "analyze": "TARGET=analyze NODE_ENV=production webpack -p --progress"
   },
   "repository": {
@@ -46,9 +48,9 @@
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/bl00mber/react-phone-input-2/issues"
+    "url": "https://evgenthesecond.github.io/react-phone-input-3/issues"
   },
-  "homepage": "https://github.com/bl00mber/react-phone-input-2",
+  "homepage": "https://evgenthesecond.github.io/react-phone-input-3",
   "jest": {
     "moduleNameMapper": {
       "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2)$": "<rootDir>/test/__mocks__/fileMock.js",
@@ -65,6 +67,7 @@
     "css-loader": "^2.1.0",
     "extract-loader": "^3.1.0",
     "file-loader": "^5.0.2",
+    "gh-pages": "^6.3.0",
     "jest": "^24.7.0",
     "less": "^3.9.0",
     "less-loader": "^4.1.0",
